@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
 
-import categories from "./category";
+import dreamsType from "./dream";
 
 const allReducers = combineReducers({
-  categories,
+  dreamsType,
 });
 export default allReducers;

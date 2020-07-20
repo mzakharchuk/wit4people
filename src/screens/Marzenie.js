@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
+import { connect } from "react-redux";
 import {
   StyleSheet,
   CheckBox,
@@ -10,7 +11,9 @@ import {
 import { Ionicons, SimpleLineIcons, FontAwesome } from "@expo/vector-icons";
 import Panel from "../components/Panel.js";
 
-export default class Marzenie extends React.Component {
+import { getDreamType } from "../_action/dream";
+
+class Marzenie extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -18,6 +21,12 @@ export default class Marzenie extends React.Component {
       isSelectedUmowa: false,
       isSelectedUTVP: false,
     };
+  }
+  componentDidMount() {
+    this.props
+      .getDreamType()
+      .then(() => {})
+      .catch((err) => console.log(err));
   }
 
   setSelectionTel = () => {
@@ -252,6 +261,21 @@ export default class Marzenie extends React.Component {
     );
   }
 }
+const mapStateToProps = (state, props) => {
+  console.log("state:", state);
+  return {
+    dreamsType: state.dreamsType,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getDreamType: () => dispatch(getDreamType()),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Marzenie);
+
 const styles = StyleSheet.create({
   container: { flex: 1, padding: 5, backgroundColor: "#fff" },
   labelType: {
