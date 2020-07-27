@@ -11,7 +11,7 @@ import {
 import { Ionicons, SimpleLineIcons, FontAwesome } from "@expo/vector-icons";
 import Panel from "../components/Panel.js";
 
-import { getDreamType } from "../_action/dream";
+import { getDreamersType } from "../_action/dreamers";
 
 class Marzenie extends React.Component {
   constructor(props) {
@@ -23,10 +23,10 @@ class Marzenie extends React.Component {
     };
   }
   componentDidMount() {
-    this.props
-      .getDreamType()
-      .then(() => {})
-      .catch((err) => console.log(err));
+    // this.props
+    //   .getDreamType()
+    //   .then(() => {})
+    //   .catch((err) => console.log(err));
   }
 
   setSelectionTel = () => {
@@ -65,30 +65,12 @@ class Marzenie extends React.Component {
               <Text>Marzyciel:</Text>
               <Text>Michal Kowalski</Text>
             </View>
-            <View
-              style={{
-                paddingBottom: 10,
-                paddingTop: 10,
-                display: "flex",
-                flexDirection: "row",
-                flexWrap: "wrap",
-                width: "80%",
-                flexGrow: 1,
-                flex: 1,
-              }}
-            >
-              <View style={styles.labelType}>
-                <Text style={{ margin: 3, color: "white" }}>Zostan kimś</Text>
-              </View>
-              <View style={styles.labelType}>
-                <Text style={{ margin: 3, color: "white" }}>Aktor</Text>
-              </View>
-              <View style={styles.labelType}>
-                <Text style={{ margin: 3, color: "white" }}>Telewizja</Text>
-              </View>
-              <View style={styles.labelType}>
-                <Text style={{ margin: 3, color: "white" }}>Serial</Text>
-              </View>
+            <View style={styles.labelContainer}>
+              {this.props.labels.map((item) => (
+                <View style={styles.labelType}>
+                  <Text style={{ margin: 3, color: "white" }}>{item}</Text>
+                </View>
+              ))}
             </View>
           </View>
         </View>
@@ -262,19 +244,19 @@ class Marzenie extends React.Component {
   }
 }
 const mapStateToProps = (state, props) => {
-  console.log("state:", state);
+  console.log("Marzenie props:", props.route.params.id);
   return {
-    dreamsType: state.dreamsType,
+    labels: ["Zostan kimś", "Aktor", "Telewizja", "Serial"],
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    getDreamType: () => dispatch(getDreamType()),
-  };
-};
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     getDreamType: () => dispatch(getDreamersType()),
+//   };
+// };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Marzenie);
+export default connect(mapStateToProps)(Marzenie);
 
 const styles = StyleSheet.create({
   container: { flex: 1, padding: 5, backgroundColor: "#fff" },
@@ -300,6 +282,16 @@ const styles = StyleSheet.create({
   },
   label: {
     margin: 8,
+  },
+  labelContainer: {
+    paddingBottom: 10,
+    paddingTop: 10,
+    display: "flex",
+    flexDirection: "row",
+    flexWrap: "wrap",
+    width: "80%",
+    flexGrow: 1,
+    flex: 1,
   },
   title: {
     fontStyle: "italic",

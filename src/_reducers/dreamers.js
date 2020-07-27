@@ -13,8 +13,8 @@ import * as types from "../types";
 
 export default function dreamTypesReducer(state = [], action) {
   switch (action.type) {
-    case types.LOAD_DREAM_TYPE_SUCCESS:
-      return action.dreamsType;
+    case types.LOAD_DREAMERS_TYPE_SUCCESS:
+      return action.dreamers;
     // case types.CREATE_CATEGORY_SUCCESS:
     //   return [...state, action.category]
     default:

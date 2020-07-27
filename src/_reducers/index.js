@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
 
-import dreamsType from "./dream";
+import dreamers from "./dreamers";
 
 const allReducers = combineReducers({
-  dreamsType,
+  dreamers,
 });
 export default allReducers;

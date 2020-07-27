@@ -16,7 +16,7 @@ export default class Panel extends React.Component {
       //Step 3
       title: props.title,
       expanded: true,
-      animation: new Animated.Value(25),
+      animation: new Animated.Value(35),
     };
   }
   _setMaxHeight(event) {

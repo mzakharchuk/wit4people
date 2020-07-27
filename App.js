@@ -11,16 +11,17 @@ import { Asset } from "expo-asset";
 import * as Font from "expo-font";
 
 import MarzenieScreen from "./src/screens/Marzenie";
+import { getDreamersType } from "./src/_action/dreamers";
 export default class App extends React.Component {
   state = { loading: true };
 
-  // loadData = () => {
-  //   store.dispatch(loadCategories())
-  // }
+  loadData = () => {
+    store.dispatch(getDreamersType());
+  };
 
   async componentWillMount() {
     // loading data
-    // const isLoad = this.loadData()
+    this.loadData();
 
     // await Font.loadAsync({
     //   Roboto: require("./assets/fonts/Roboto.ttf"),
