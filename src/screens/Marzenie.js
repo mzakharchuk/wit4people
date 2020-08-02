@@ -11,7 +11,7 @@ import {
 import { Ionicons, SimpleLineIcons, FontAwesome } from "@expo/vector-icons";
 import Panel from "../components/Panel.js";
 
-import { getDreamersType } from "../_action/dreamers";
+import { getDreamer } from "../_action/dreamers";
 
 class Marzenie extends React.Component {
   constructor(props) {
@@ -244,19 +244,19 @@ class Marzenie extends React.Component {
   }
 }
 const mapStateToProps = (state, props) => {
-  console.log("Marzenie props:", props.route.params.id);
+  // console.log("Marzenie props:", props.route.params.id);
   return {
     labels: ["Zostan kimś", "Aktor", "Telewizja", "Serial"],
   };
 };
 
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     getDreamType: () => dispatch(getDreamersType()),
-//   };
-// };
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getDreamer: (id) => dispatch(getDreamer(id)),
+  };
+};
 
-export default connect(mapStateToProps)(Marzenie);
+export default connect(mapStateToProps, mapDispatchToProps)(Marzenie);
 
 const styles = StyleSheet.create({
   container: { flex: 1, padding: 5, backgroundColor: "#fff" },

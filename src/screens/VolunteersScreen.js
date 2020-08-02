@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { StyleSheet, Text, View, TouchableHighlight } from "react-native";
 import { SimpleLineIcons } from "@expo/vector-icons";
 
-class Home extends React.Component {
+class VolunteersScreen extends React.Component {
   render() {
     return (
       <View style={{ padding: 10 }}>
@@ -11,7 +11,7 @@ class Home extends React.Component {
           <TouchableHighlight
             key={item.id}
             onPress={() =>
-              this.props.navigation.navigate("Marzenie", { id: item.id })
+              this.props.navigation.navigate("Volunteer", { id: item.id })
             }
           >
             <View style={{ display: "flex", flexDirection: "row" }}>
@@ -28,9 +28,6 @@ class Home extends React.Component {
                     flex: 1,
                   }}
                 >
-                  <Text style={styles.title}>
-                    Chcę zagrać rolę w serialu Barwy Szczęścia
-                  </Text>
                   <Text style={{ paddingTop: 5 }}>
                     {item.firstName + " " + item.lastName}
                   </Text>
@@ -49,7 +46,7 @@ const mapStateToProps = (state, props) => {
   };
 };
 
-export default connect(mapStateToProps)(Home);
+export default connect(mapStateToProps)(VolunteersScreen);
 
 const styles = StyleSheet.create({
   title: {
