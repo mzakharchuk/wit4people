@@ -14,5 +14,5 @@ wit4people
 ```bash
 1. instal expo on your phone
 2. npm start
-3. scan QA code
+3. scan QR code
 ```
