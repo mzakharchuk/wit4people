@@ -1,35 +1,52 @@
 import React from "react";
 
-import { View, Text, TouchableHighlight } from "react-native";
+import { StyleSheet, View, Text, TouchableHighlight } from "react-native";
 
 export default class HomeScreen extends React.Component {
   render() {
     return (
-      <View>
+      <View style={styles.container}>
         <View>
-          <Text>Mój profil</Text>
+          <Text style={styles.text}>Mój profil</Text>
         </View>
         <View>
           <TouchableHighlight
+            activeOpacity={0.6}
+            underlayColor="#79E888"
             onPress={() => this.props.navigation.navigate("Marzenie")}
           >
-            <Text>Moje Marzenia</Text>
+            <Text style={styles.text}>Moje Marzenia</Text>
           </TouchableHighlight>
         </View>
         <View>
-          <Text>Baza Marzeń</Text>
+          <TouchableHighlight
+            activeOpacity={0.6}
+            underlayColor="#79E888"
+            onPress={() => this.props.navigation.navigate("DatabaseDreams")}
+          >
+            <Text style={styles.text}>Baza Marzeń</Text>
+          </TouchableHighlight>
         </View>
         <View>
-          <Text>Baza Wiedzy</Text>
+          <Text style={styles.text}>Baza Wiedzy</Text>
         </View>
         <View>
           <TouchableHighlight
+            activeOpacity={0.6}
+            underlayColor="#79E888"
             onPress={() => this.props.navigation.navigate("Volunteers")}
           >
-            <Text>Wolontariusze</Text>
+            <Text style={styles.text}>Wolontariusze</Text>
           </TouchableHighlight>
         </View>
       </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: { padding: 10 },
+  text: {
+    fontSize: 20,
+  },
+});
