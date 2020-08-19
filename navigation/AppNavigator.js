@@ -4,6 +4,7 @@ import VolunteersScreen from "../src/screens/VolunteersScreen";
 import HomeScreen from "../src/screens/HomeScreen";
 import VolunteerScreen from "../src/screens/Volunteer";
 import DatabaseDreams from "../src/screens/DatabaseDreams";
+import ProfileScreen from "../src/screens/ProfileScreen";
 
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
@@ -26,6 +27,18 @@ function AppNavigator() {
             },
           }}
         />
+        <Stack.Screen
+          name="Profile"
+          component={ProfileScreen}
+          options={{
+            title: "Profile",
+            headerTitleStyle: {
+              fontWeight: "bold",
+              paddingLeft: "30%",
+            },
+          }}
+        />
+
         <Stack.Screen
           name="Volunteers"
           component={VolunteersScreen}

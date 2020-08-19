@@ -8,7 +8,7 @@ import {
   View,
   Platform,
 } from "react-native";
-import { Ionicons, SimpleLineIcons, FontAwesome } from "@expo/vector-icons";
+import { Ionicons, MaterialIcons, FontAwesome } from "@expo/vector-icons";
 import Panel from "../components/Panel.js";
 
 import { getDreamer } from "../_action/dreamers";
@@ -43,8 +43,8 @@ class Marzenie extends React.Component {
     return (
       <ScrollView style={styles.container}>
         <View style={{ display: "flex", flexDirection: "row" }}>
-          <SimpleLineIcons
-            name="user-female"
+          <MaterialIcons
+            name="account-circle"
             size={94}
             style={{ color: "#ffac88" }}
           />

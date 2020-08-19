@@ -3,11 +3,10 @@ import {
   StyleSheet,
   Text,
   View,
-  Image,
   TouchableHighlight,
   Animated,
 } from "react-native"; //Step 1
-import { AntDesign } from "@expo/vector-icons";
+import { Foundation } from "@expo/vector-icons";
 
 export default class Panel extends React.Component {
   constructor(props) {
@@ -15,7 +14,7 @@ export default class Panel extends React.Component {
     this.state = {
       //Step 3
       title: props.title,
-      expanded: true,
+      expanded: false,
       animation: new Animated.Value(35),
     };
   }
@@ -71,13 +70,9 @@ export default class Panel extends React.Component {
             underlayColor="#f1f1f1"
           >
             {this.state.expanded ? (
-              <AntDesign name="caretup" size={16} style={styles.buttonImage} />
+              <Foundation name="minus" size={20} style={styles.buttonImage} />
             ) : (
-              <AntDesign
-                name="caretdown"
-                size={16}
-                style={styles.buttonImage}
-              />
+              <Foundation name="plus" size={20} style={styles.buttonImage} />
             )}
           </TouchableHighlight>
         </View>
@@ -101,16 +96,17 @@ const styles = StyleSheet.create({
   },
   title: {
     flex: 1,
-    padding: 10,
+    paddingTop: 5,
+    paddingLeft: 10,
     color: "#2a2f43",
   },
-  button: {},
+  button: { paddingTop: 5 },
   buttonImage: {
     width: 30,
     height: 25,
   },
   body: {
     padding: 10,
-    paddingTop: 0,
+    paddingTop: 5,
   },
 });
