@@ -40,6 +40,7 @@ class DatabaseDreamsScreen extends React.Component {
   };
   submitSearch = () => {
     this.setState({ isDisabledReset: false });
+    this.props.navigation.navigate("DatabaseDreamsResult");
   };
   resetHandler = () => {
     this.setState({ isDisabledReset: true });

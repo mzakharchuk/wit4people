@@ -3,8 +3,11 @@ import MarzenieScreen from "../src/screens/Marzenie";
 import VolunteersScreen from "../src/screens/VolunteersScreen";
 import HomeScreen from "../src/screens/HomeScreen";
 import VolunteerScreen from "../src/screens/Volunteer";
-import DatabaseDreamsScreen from "../src/screens/DatabaseDreamsScreen";
+
 import ProfileScreen from "../src/screens/ProfileScreen";
+
+import DatabaseDreamsScreen from "../src/screens/DatabaseDreamsScreen";
+import DatabaseDreamsResultScreen from "../src/screens/DatabaseDreamsResultScreen";
 
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
@@ -72,6 +75,17 @@ function AppNavigator() {
         <Stack.Screen
           name="DatabaseDreams"
           component={DatabaseDreamsScreen}
+          options={{
+            title: "Baza Marzeń",
+            headerTitleStyle: {
+              fontWeight: "bold",
+              paddingLeft: "15%",
+            },
+          }}
+        />
+        <Stack.Screen
+          name="DatabaseDreamsResult"
+          component={DatabaseDreamsResultScreen}
           options={{
             title: "Baza Marzeń",
             headerTitleStyle: {
