@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { StyleSheet, Text, View, TouchableHighlight } from "react-native";
-import { SimpleLineIcons } from "@expo/vector-icons";
+import { MaterialIcons } from "@expo/vector-icons";
 
 class VolunteersScreen extends React.Component {
   render() {
@@ -15,10 +15,10 @@ class VolunteersScreen extends React.Component {
             }
           >
             <View style={{ display: "flex", flexDirection: "row" }}>
-              <SimpleLineIcons
-                name="user-female"
+              <MaterialIcons
+                name="account-circle"
                 size={94}
-                style={{ color: "#ffac88" }}
+                style={{ color: "#79E888" }}
               />
               <View style={{ paddingLeft: 10 }}>
                 <View
