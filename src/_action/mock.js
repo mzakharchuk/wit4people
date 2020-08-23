@@ -32,7 +32,7 @@ export const dreamers = [
     ],
     firstName: "Magdalena",
     gender: "string",
-    id: "123",
+    id: "23",
     lastName: "Kowalska",
   },
 ];
@@ -41,6 +41,6 @@ export const dreamer = {
   birthDate: "2020-07-27",
   firstName: "Magdalena",
   gender: "Male",
-  id: "123",
+  id: "25",
   lastName: "Kowalska",
 };

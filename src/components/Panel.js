@@ -6,7 +6,7 @@ import {
   TouchableHighlight,
   Animated,
 } from "react-native"; //Step 1
-import { Foundation } from "@expo/vector-icons";
+import { Foundation, Entypo } from "@expo/vector-icons";
 
 export default class Panel extends React.Component {
   constructor(props) {
@@ -70,9 +70,17 @@ export default class Panel extends React.Component {
             underlayColor="#f1f1f1"
           >
             {this.state.expanded ? (
-              <Foundation name="minus" size={20} style={styles.buttonImage} />
+              <Entypo
+                name="chevron-thin-up"
+                size={20}
+                style={styles.buttonImage}
+              />
             ) : (
-              <Foundation name="plus" size={20} style={styles.buttonImage} />
+              <Entypo
+                name="chevron-thin-down"
+                size={20}
+                style={styles.buttonImage}
+              />
             )}
           </TouchableHighlight>
         </View>
@@ -87,7 +95,7 @@ export default class Panel extends React.Component {
 const styles = StyleSheet.create({
   container: {
     paddingBottom: 7,
-    backgroundColor: "#ccc",
+    backgroundColor: "#E9E9E9",
     overflow: "hidden",
     borderRadius: 15,
   },

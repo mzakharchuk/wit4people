@@ -45,7 +45,7 @@ class Marzenie extends React.Component {
         <View style={{ display: "flex", flexDirection: "row" }}>
           <MaterialIcons
             name="account-circle"
-            size={94}
+            size={150}
             style={{ color: "#ffac88" }}
           />
           <View style={{ paddingLeft: 10 }}>

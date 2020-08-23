@@ -49,6 +49,7 @@ export default class HomeScreen extends React.Component {
 const styles = StyleSheet.create({
   container: { padding: 10 },
   text: {
-    fontSize: 20,
+    fontSize: 25,
+    fontWeight: "bold",
   },
 });

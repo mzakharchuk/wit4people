@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { StyleSheet, Text, View, TouchableHighlight } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 
 class VolunteersScreen extends React.Component {
@@ -8,8 +8,9 @@ class VolunteersScreen extends React.Component {
     return (
       <View style={{ padding: 10 }}>
         {this.props.dreamers.map((item) => (
-          <TouchableHighlight
+          <TouchableOpacity
             key={item.id}
+            underlayColor={"transparent"}
             onPress={() =>
               this.props.navigation.navigate("Volunteer", { id: item.id })
             }
@@ -21,20 +22,14 @@ class VolunteersScreen extends React.Component {
                 style={{ color: "#79E888" }}
               />
               <View style={{ paddingLeft: 10 }}>
-                <View
-                  style={{
-                    width: "80%",
-                    flexGrow: 1,
-                    flex: 1,
-                  }}
-                >
-                  <Text style={{ paddingTop: 5 }}>
+                <View style={{ flex: 1 }}>
+                  <Text style={{ paddingTop: 5, fontSize: 16 }}>
                     {item.firstName + " " + item.lastName}
                   </Text>
                 </View>
               </View>
             </View>
-          </TouchableHighlight>
+          </TouchableOpacity>
         ))}
       </View>
     );

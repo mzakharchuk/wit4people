@@ -59,7 +59,6 @@ class ProfileScreen extends React.Component {
             borderColor: "#ccc",
             borderWidth: 1,
             shadowColor: "#ccc",
-            shadowOffset: 0.6,
           }}
         >
           <View style={{ alignItems: "center" }}>

@@ -23,10 +23,10 @@ function AppNavigator() {
           name="Home"
           component={HomeScreen}
           options={{
-            title: "Wit4people",
+            title: "Mam marzenia",
             headerTitleStyle: {
               fontWeight: "bold",
-              paddingLeft: "35%",
+              paddingLeft: "30%",
             },
           }}
         />
@@ -49,7 +49,7 @@ function AppNavigator() {
             title: "Wolontariusze",
             headerTitleStyle: {
               fontWeight: "bold",
-              paddingLeft: "35%",
+              paddingLeft: "15%",
             },
           }}
         />
