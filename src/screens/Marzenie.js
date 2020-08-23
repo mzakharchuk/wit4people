@@ -11,6 +11,9 @@ import {
 import { Ionicons, MaterialIcons, FontAwesome } from "@expo/vector-icons";
 import Panel from "../components/Panel.js";
 
+import { TitleIcon } from "../components/TitleIcon";
+import { CheckboxWithTitle } from "../components/CheckboxWithTitle";
+
 import { getDreamer } from "../_action/dreamers";
 
 class Marzenie extends React.Component {
@@ -116,55 +119,11 @@ class Marzenie extends React.Component {
           </Panel>
         </View>
         <View style={{ paddingBottom: 10 }}>
-          <Panel
-            title="Wolontariusze przypisani do tego marzenia"
-            expanded={false}
-          >
-            <View
-              style={{
-                flexDirection: "column",
-                alignContent: "space-between",
-                justifyContent: "space-between",
-                margin: 5,
-                backgroundColor: "#ccc",
-              }}
-            >
-              <View style={{ flexDirection: "row", alignContent: "center" }}>
-                <View style={{}}>
-                  <FontAwesome
-                    name="circle-thin"
-                    size={64}
-                    style={{ color: "#ffac88" }}
-                  />
-                </View>
-                <View style={{ paddingTop: 20, paddingLeft: 20 }}>
-                  <Text>Magda K.</Text>
-                </View>
-              </View>
-              <View style={{ flexDirection: "row", alignContent: "center" }}>
-                <View style={{}}>
-                  <FontAwesome
-                    name="circle-thin"
-                    size={64}
-                    style={{ color: "#ffac88" }}
-                  />
-                </View>
-                <View style={{ paddingTop: 20, paddingLeft: 20 }}>
-                  <Text>Piotrek T.</Text>
-                </View>
-              </View>
-              <View style={{ flexDirection: "row", alignContent: "center" }}>
-                <View style={{}}>
-                  <FontAwesome
-                    name="circle-thin"
-                    size={64}
-                    style={{ color: "#ffac88" }}
-                  />
-                </View>
-                <View style={{ paddingTop: 20, paddingLeft: 20 }}>
-                  <Text>Ania K.</Text>
-                </View>
-              </View>
+          <Panel title="Wolontariusze przypisani do tego marzenia">
+            <View style={styles.containerVolunteer}>
+              {this.props.voluntiers.map((item) => (
+                <TitleIcon key={item.id} title={item.name} />
+              ))}
             </View>
           </Panel>
         </View>
@@ -172,38 +131,21 @@ class Marzenie extends React.Component {
         <View style={{ paddingBottom: 10 }}>
           <Panel title="Etapy realizacji" expanded={false}>
             <View style={{ paddingLeft: 15, backgroundColor: "#ccc" }}>
-              <View style={styles.checkboxContainer}>
-                <CheckBox
-                  value={this.state.isSelectedTel}
-                  onValueChange={this.setSelectionTel}
-                  style={styles.checkbox}
-                />
-                <Text style={styles.label}>
-                  Wykonać telefon to Aystenta ds. Planu Filmowego kiedy rusza
-                  plan zdjęciowy
-                </Text>
-              </View>
-              <View style={styles.checkboxContainer}>
-                <CheckBox
-                  value={this.state.isSelectedUmowa}
-                  onValueChange={this.setSelectionUmowa}
-                  style={styles.checkbox}
-                />
-                <Text style={styles.label}>
-                  Zapytać o datę podpisania umowy
-                </Text>
-              </View>
-
-              <View style={styles.checkboxContainer}>
-                <CheckBox
-                  value={this.state.isSelectedUTVP}
-                  onValueChange={this.setSelectionUTVP}
-                  style={styles.checkbox}
-                />
-                <Text style={styles.label}>
-                  Potwierdzić datę podpisania umowy z TVP z mamą Michała
-                </Text>
-              </View>
+              <CheckboxWithTitle
+                title="Wykonać telefon to Aystenta ds. Planu Filmowego kiedy rusza plan zdjęciowy"
+                value={this.state.isSelectedTel}
+                onChange={this.setSelectionTel}
+              />
+              <CheckboxWithTitle
+                title="Zapytać o datę podpisania umowy"
+                value={this.state.isSelectedUmowa}
+                onChange={this.setSelectionUmowa}
+              />
+              <CheckboxWithTitle
+                title="Potwierdzić datę podpisania umowy z TVP z mamą Michała"
+                value={this.state.isSelectedUTVP}
+                onChange={this.setSelectionUTVP}
+              />
             </View>
           </Panel>
         </View>
@@ -247,6 +189,11 @@ const mapStateToProps = (state, props) => {
   // console.log("Marzenie props:", props.route.params.id);
   return {
     labels: ["Zostan kimś", "Aktor", "Telewizja", "Serial"],
+    voluntiers: [
+      { id: 1, name: "Magda K" },
+      { id: 2, name: "Piotrek T" },
+      { id: 3, name: "Ania K" },
+    ],
   };
 };
 
@@ -273,12 +220,12 @@ const styles = StyleSheet.create({
     fontSize: 8,
     flexWrap: "wrap",
   },
-  checkboxContainer: {
-    flexDirection: "row",
+  containerVolunteer: {
+    flexDirection: "column",
+    alignContent: "space-between",
+    justifyContent: "space-between",
+    margin: 5,
     backgroundColor: "#ccc",
-  },
-  checkbox: {
-    alignSelf: "center",
   },
   label: {
     margin: 8,

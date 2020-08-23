@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
+import { ButtonTitle } from "../components/TitleIcon";
 
 const result = [
   {
@@ -31,28 +32,14 @@ class DatabaseDreamsResultScreen extends React.Component {
     return (
       <View>
         {result.map((item) => (
-          <TouchableOpacity
+          <ButtonTitle
             key={item.id}
-            style={styles.button}
-            underlayColor={"transparent"}
+            title={item.title}
+            name={item.name}
             onPress={() =>
               this.props.navigation.navigate("Marzenie", { id: item.id })
             }
-          >
-            <View style={{ display: "flex", flexDirection: "row" }}>
-              <MaterialIcons
-                name="account-circle"
-                size={94}
-                style={{ color: "#79E888" }}
-              />
-              <View style={{ paddingLeft: 10 }}>
-                <View style={{ flex: 1 }}>
-                  <Text style={styles.title}>{item.title}</Text>
-                  <Text style={styles.name}>{item.name}</Text>
-                </View>
-              </View>
-            </View>
-          </TouchableOpacity>
+          />
         ))}
       </View>
     );

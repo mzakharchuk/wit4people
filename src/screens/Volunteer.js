@@ -12,7 +12,7 @@ import {
 } from "react-native";
 import { Ionicons, MaterialIcons, FontAwesome } from "@expo/vector-icons";
 import Panel from "../components/Panel.js";
-import { Root } from "native-base";
+import { ButtonTitleSmall } from "../components/TitleIcon";
 
 export default class Volunteer extends React.Component {
   state = {
@@ -151,46 +151,24 @@ export default class Volunteer extends React.Component {
 
         <View style={{ paddingBottom: 10 }}>
           <Panel title="Marzenia w trakcie realizacji" expanded={false}>
-            <View style={{ paddingLeft: 15, backgroundColor: "#ccc" }}>
-              <View style={styles.checkboxContainer}>
-                <CheckBox
-                  value={this.state.isSelectedTel}
-                  onValueChange={this.setSelectionTel}
-                  style={styles.checkbox}
+            <View>
+              {result.map((item) => (
+                <ButtonTitleSmall
+                  key={item.id}
+                  title={item.title}
+                  name={item.name}
+                  onPress={() =>
+                    this.props.navigation.navigate("Marzenie", { id: item.id })
+                  }
                 />
-                <Text style={styles.label}>
-                  Wykonać telefon to Aystenta ds. Planu Filmowego kiedy rusza
-                  plan zdjęciowy
-                </Text>
-              </View>
-              <View style={styles.checkboxContainer}>
-                <CheckBox
-                  value={this.state.isSelectedUmowa}
-                  onValueChange={this.setSelectionUmowa}
-                  style={styles.checkbox}
-                />
-                <Text style={styles.label}>
-                  Zapytać o datę podpisania umowy
-                </Text>
-              </View>
-
-              <View style={styles.checkboxContainer}>
-                <CheckBox
-                  value={this.state.isSelectedUTVP}
-                  onValueChange={this.setSelectionUTVP}
-                  style={styles.checkbox}
-                />
-                <Text style={styles.label}>
-                  Potwierdzić datę podpisania umowy z TVP z mamą Michała
-                </Text>
-              </View>
+              ))}
             </View>
           </Panel>
         </View>
         <View style={{ paddingBottom: 10 }}>
           <Panel title="Marzenia zrealizowane" expanded={false}>
             <View style={{ paddingLeft: 15, backgroundColor: "#ccc" }}>
-              <Text>Notes</Text>
+              <Text>no data</Text>
             </View>
           </Panel>
         </View>
@@ -198,6 +176,19 @@ export default class Volunteer extends React.Component {
     );
   }
 }
+
+const result = [
+  {
+    id: 1,
+    name: "Michał Kowalski",
+    title: 'Chcę zagrać rolę w serialu "Barwy Szczęścia"',
+  },
+  {
+    id: 2,
+    name: "Magdalena Polak",
+    title: "Chcę zagrać rolę w filmie wojennym",
+  },
+];
 
 const styles = StyleSheet.create({
   container: { flex: 1, padding: 5, backgroundColor: "#fff" },
@@ -213,13 +204,6 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 8,
     flexWrap: "wrap",
-  },
-  checkboxContainer: {
-    flexDirection: "row",
-    backgroundColor: "#ccc",
-  },
-  checkbox: {
-    alignSelf: "center",
   },
   label: {
     margin: 8,
