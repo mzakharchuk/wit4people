@@ -5,6 +5,7 @@ import HomeScreen from "../src/screens/HomeScreen";
 import VolunteerScreen from "../src/screens/Volunteer";
 
 import ProfileScreen from "../src/screens/ProfileScreen";
+import StartScreen from "../src/screens/StartScreen";
 
 import DatabaseDreamsScreen from "../src/screens/DatabaseDreamsScreen";
 import DatabaseDreamsResultScreen from "../src/screens/DatabaseDreamsResultScreen";
@@ -19,6 +20,18 @@ function AppNavigator() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Start">
+        <Stack.Screen
+          name="Start"
+          component={StartScreen}
+          options={{
+            headerShown: false,
+            title: "Mam marzenia",
+            headerTitleStyle: {
+              fontWeight: "bold",
+              paddingLeft: "30%",
+            },
+          }}
+        />
         <Stack.Screen
           name="Home"
           component={HomeScreen}
