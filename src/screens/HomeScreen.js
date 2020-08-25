@@ -2,7 +2,10 @@ import React from "react";
 
 import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
 
-export default class HomeScreen extends React.Component {
+import { logOut } from "../_action/userToken";
+import { connect } from "react-redux";
+
+class HomeScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
@@ -41,11 +44,28 @@ export default class HomeScreen extends React.Component {
             <Text style={styles.text}>Wolontariusze</Text>
           </TouchableOpacity>
         </View>
+
+        <View style={{ paddingTop: 25 }}>
+          <TouchableOpacity
+            underlayColor="#79E888"
+            onPress={() => this.props.logOut()}
+          >
+            <Text style={styles.text}>Wylogoj sie</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     );
   }
 }
+function mapDispatchToProps(dispatch) {
+  return {
+    logOut: () => {
+      dispatch(logOut());
+    },
+  };
+}
 
+export default connect(null, mapDispatchToProps)(HomeScreen);
 const styles = StyleSheet.create({
   container: { padding: 10 },
   text: {

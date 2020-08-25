@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 import {
   View,
   Text,
@@ -7,7 +8,9 @@ import {
   TextInput,
 } from "react-native";
 
-export default class LoginScreen extends React.Component {
+import { signIn } from "../_action/userToken";
+
+class LoginScreen extends React.Component {
   render() {
     return (
       <View style={{ paddingTop: 75 }}>
@@ -30,6 +33,7 @@ export default class LoginScreen extends React.Component {
         <View style={{ marginRight: 25, marginLeft: 25, paddingBottom: 30 }}>
           <Text style={{ fontSize: 12, color: "#1C86BB" }}>Haslo</Text>
           <TextInput
+            secureTextEntry={true}
             style={{
               borderBottomColor: "#E4E4E4",
               borderBottomWidth: 1,
@@ -38,7 +42,10 @@ export default class LoginScreen extends React.Component {
         </View>
         <TouchableOpacity
           style={styles.button}
-          onPress={() => this.props.navigation.navigate("Home")}
+          onPress={() => {
+            this.props.signIn();
+            // this.props.navigation.navigate("Home");
+          }}
         >
           <Text style={styles.text}>Zaloguj się</Text>
         </TouchableOpacity>
@@ -46,6 +53,14 @@ export default class LoginScreen extends React.Component {
     );
   }
 }
+function mapDispatchToProps(dispatch) {
+  return {
+    signIn: () => {
+      dispatch(signIn());
+    },
+  };
+}
+export default connect(null, mapDispatchToProps)(LoginScreen);
 
 const styles = StyleSheet.create({
   button: {

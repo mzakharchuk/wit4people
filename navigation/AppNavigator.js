@@ -13,112 +13,127 @@ import DatabaseDreamsResultScreen from "../src/screens/DatabaseDreamsResultScree
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
 import { Ionicons, Foundation } from "@expo/vector-icons";
+import { connect } from "react-redux";
 
 const Stack = createStackNavigator();
 
-function AppNavigator() {
+const AppNavigator = ({ userToken = null }) => {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Start">
-        <Stack.Screen
-          name="Start"
-          component={StartScreen}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="Login"
-          component={LoginScreen}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="Home"
-          component={HomeScreen}
-          options={{
-            title: "Mam marzenia",
-            headerTitleStyle: {
-              fontWeight: "bold",
-              paddingLeft: "30%",
-            },
-          }}
-        />
-        <Stack.Screen
-          name="Profile"
-          component={ProfileScreen}
-          options={{
-            title: "Profile",
-            headerTitleStyle: {
-              fontWeight: "bold",
-              paddingLeft: "30%",
-            },
-          }}
-        />
+        {userToken == null ? (
+          <>
+            <Stack.Screen
+              name="Start"
+              component={StartScreen}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="Login"
+              component={LoginScreen}
+              options={{ headerShown: false }}
+            />
+          </>
+        ) : (
+          <>
+            <Stack.Screen
+              name="Home"
+              component={HomeScreen}
+              options={{
+                title: "Mam marzenia",
+                headerTitleStyle: {
+                  fontWeight: "bold",
+                  paddingLeft: "30%",
+                },
+              }}
+            />
+            <Stack.Screen
+              name="Profile"
+              component={ProfileScreen}
+              options={{
+                title: "Profile",
+                headerTitleStyle: {
+                  fontWeight: "bold",
+                  paddingLeft: "30%",
+                },
+              }}
+            />
 
-        <Stack.Screen
-          name="Volunteers"
-          component={VolunteersScreen}
-          options={{
-            title: "Wolontariusze",
-            headerTitleStyle: {
-              fontWeight: "bold",
-              paddingLeft: "15%",
-            },
-          }}
-        />
-        <Stack.Screen
-          name="Marzenie"
-          component={MarzenieScreen}
-          options={({ navigation, route }) => ({
-            title: "Marzenie",
-            headerTitleStyle: {
-              fontWeight: "bold",
-              paddingLeft: "25%",
-            },
-            // headerLeft: () => (
-            //   <Foundation
-            //     name="arrow-left"
-            //     size={32}
-            //     style={{ paddingLeft: 5 }}
-            //     onPress={() => navigation.push("Home")}
-            //   />
-            // ),
-          })}
-        />
-        <Stack.Screen
-          name="DatabaseDreams"
-          component={DatabaseDreamsScreen}
-          options={{
-            title: "Baza Marzeń",
-            headerTitleStyle: {
-              fontWeight: "bold",
-              paddingLeft: "15%",
-            },
-          }}
-        />
-        <Stack.Screen
-          name="DatabaseDreamsResult"
-          component={DatabaseDreamsResultScreen}
-          options={{
-            title: "Baza Marzeń",
-            headerTitleStyle: {
-              fontWeight: "bold",
-              paddingLeft: "15%",
-            },
-          }}
-        />
-        <Stack.Screen
-          name="Volunteer"
-          component={VolunteerScreen}
-          options={({ navigation, route }) => ({
-            title: "Wolontariusz",
-            headerTitleStyle: {
-              fontWeight: "bold",
-              paddingLeft: "25%",
-            },
-          })}
-        />
+            <Stack.Screen
+              name="Volunteers"
+              component={VolunteersScreen}
+              options={{
+                title: "Wolontariusze",
+                headerTitleStyle: {
+                  fontWeight: "bold",
+                  paddingLeft: "15%",
+                },
+              }}
+            />
+            <Stack.Screen
+              name="Marzenie"
+              component={MarzenieScreen}
+              options={({ navigation, route }) => ({
+                title: "Marzenie",
+                headerTitleStyle: {
+                  fontWeight: "bold",
+                  paddingLeft: "25%",
+                },
+                // headerLeft: () => (
+                //   <Foundation
+                //     name="arrow-left"
+                //     size={32}
+                //     style={{ paddingLeft: 5 }}
+                //     onPress={() => navigation.push("Home")}
+                //   />
+                // ),
+              })}
+            />
+            <Stack.Screen
+              name="DatabaseDreams"
+              component={DatabaseDreamsScreen}
+              options={{
+                title: "Baza Marzeń",
+                headerTitleStyle: {
+                  fontWeight: "bold",
+                  paddingLeft: "15%",
+                },
+              }}
+            />
+            <Stack.Screen
+              name="DatabaseDreamsResult"
+              component={DatabaseDreamsResultScreen}
+              options={{
+                title: "Baza Marzeń",
+                headerTitleStyle: {
+                  fontWeight: "bold",
+                  paddingLeft: "15%",
+                },
+              }}
+            />
+            <Stack.Screen
+              name="Volunteer"
+              component={VolunteerScreen}
+              options={({ navigation, route }) => ({
+                title: "Wolontariusz",
+                headerTitleStyle: {
+                  fontWeight: "bold",
+                  paddingLeft: "25%",
+                },
+              })}
+            />
+          </>
+        )}
       </Stack.Navigator>
     </NavigationContainer>
   );
-}
+};
 
-export default AppNavigator;
+const mapStateToProps = (state, props) => {
+  console.log("AppNavigator", state);
+  return {
+    userToken: state.userToken,
+  };
+};
+
+export default connect(mapStateToProps)(AppNavigator);
